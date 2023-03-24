@@ -13,6 +13,12 @@ namespace randomPoem {
     let objekte: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
 
     // console.log(subjekte, prädikate, objekte);
+    
+    for (let i: number = subjekte.length; i > 0; i--) {
+        // console.log(i);
+        getVerse(subjekte, prädikate, objekte);
+
+    }
 
     function getVerse(_subjekte: string[], _prädikate: string[], _objekte: string[]): string {
         // console.log("alohomora"); 
@@ -33,12 +39,6 @@ namespace randomPoem {
         console.log(vers + " ");
 
         return vers;
-
-    }
-
-    for (let i: number = subjekte.length; i > 0; i--) {
-        // console.log(i);
-        getVerse(subjekte, prädikate, objekte);
 
     }
 
