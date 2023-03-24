@@ -12,6 +12,10 @@ var randomPoem;
     let prädikate = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
     let objekte = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"];
     // console.log(subjekte, prädikate, objekte);
+    for (let i = subjekte.length; i > 0; i--) {
+        // console.log(i);
+        getVerse(subjekte, prädikate, objekte);
+    }
     function getVerse(_subjekte, _prädikate, _objekte) {
         // console.log("alohomora"); 
         let vers = "";
@@ -26,10 +30,6 @@ var randomPoem;
         _objekte.splice(number3, 1);
         console.log(vers + " ");
         return vers;
-    }
-    for (let i = subjekte.length; i > 0; i--) {
-        // console.log(i);
-        getVerse(subjekte, prädikate, objekte);
     }
 })(randomPoem || (randomPoem = {}));
 //# sourceMappingURL=script.js.map
