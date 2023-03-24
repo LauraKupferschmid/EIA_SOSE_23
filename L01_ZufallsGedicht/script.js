@@ -14,18 +14,18 @@ var randomPoem;
     // console.log(subjekte, prädikate, objekte);
     function getVerse(_subjekte, _prädikate, _objekte) {
         // console.log("alohomora"); 
-        let zeile = "";
-        let zahl1 = Math.floor(Math.random() * _subjekte.length);
-        zeile = zeile + _subjekte[zahl1] + " ";
-        _subjekte.splice(zahl1, 1);
-        let zahl2 = Math.floor(Math.random() * _prädikate.length);
-        zeile = zeile + _prädikate[zahl2] + " ";
-        _prädikate.splice(zahl2, 1);
-        let zahl3 = Math.floor(Math.random() * _objekte.length);
-        zeile = zeile + _objekte[zahl3] + " ";
-        _objekte.splice(zahl3, 1);
-        console.log(zeile + " ");
-        return zeile;
+        let vers = "";
+        let number1 = Math.floor(Math.random() * _subjekte.length);
+        vers = vers + _subjekte[number1] + " ";
+        _subjekte.splice(number1, 1);
+        let number2 = Math.floor(Math.random() * _prädikate.length);
+        vers = vers + _prädikate[number2] + " ";
+        _prädikate.splice(number2, 1);
+        let number3 = Math.floor(Math.random() * _objekte.length);
+        vers = vers + _objekte[number3] + " ";
+        _objekte.splice(number3, 1);
+        console.log(vers + " ");
+        return vers;
     }
     for (let i = subjekte.length; i > 0; i--) {
         // console.log(i);
