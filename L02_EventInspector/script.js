@@ -24,9 +24,16 @@ var EvnetInspector;
     function logInfo(_event) {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
-    function bton() {
+    document.getElementById("btn")?.addEventListener("tree", () => {
+        console.log("i am working");
+    });
+    /*function bton(): void {
         console.log("hi ich funktioniere");
+        conso
+    }*/
+    function custom(_event) {
+        let customone = new CustomEvent('tree', { bubbles: true });
+        document.querySelector("#btn").dispatchEvent(customone);
     }
-    document.getElementById("btn")?.addEventListener("click", bton);
 })(EvnetInspector || (EvnetInspector = {}));
 //# sourceMappingURL=script.js.map
