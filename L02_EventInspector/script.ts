@@ -17,8 +17,8 @@ namespace EvnetInspector {
 
         document.getElementById("#div02")?.addEventListener("click", logInfo);
         document.getElementById("#div02")?.addEventListener("keyup", logInfo);
-    }
 
+    }
 
     function setInfoBox(_event: MouseEvent): void {
 
@@ -36,11 +36,18 @@ namespace EvnetInspector {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
 
-    function bton(): void {
+    document.getElementById("btn")?.addEventListener("tree",() =>{
+        console.log("i am working")
+    })
+    /*function bton(): void {
         console.log("hi ich funktioniere");
+        conso
+    }*/
+
+    function custom(_event: MouseEvent): void {
+        let customone = new CustomEvent('tree', {bubbles: true})
+    document.querySelector("#btn")!.dispatchEvent(customone);
+        
     }
-
-    document.getElementById("btn")?.addEventListener("click", bton);
-
 
 }
