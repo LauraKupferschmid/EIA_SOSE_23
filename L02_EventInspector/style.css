@@ -2,8 +2,8 @@ span{
     position: fixed;
     top: 150px;
     left: 150px;
-    size: 30px;
-    margin: 20px;
+    margin-left: 40px;
+    margin-top: 30px;
 }
 
 body{
