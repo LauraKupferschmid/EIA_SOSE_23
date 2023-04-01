@@ -27,7 +27,7 @@ namespace EvnetInspector {
         document.getElementById("#div02")?.addEventListener("click", logInfo);
         document.getElementById("#div02")?.addEventListener("keyup", logInfo);
 
-        document.querySelector("#button")?.addEventListener("click",button1)
+        document.getElementById("btn")?.addEventListener("click",button1);
 
     }
 
@@ -47,7 +47,7 @@ namespace EvnetInspector {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
 
-    const customevent = new CustomEvent("word",{bubbles:true, detail: {name:"jim"} });
+    const customevent = new CustomEvent("word",{bubbles:true, detail: {name:"jim was here"}});
 
     function button1(){
         document.addEventListener("word", customEvent);
@@ -55,8 +55,8 @@ namespace EvnetInspector {
     }
 
     function customEvent(){
-        console.log(customevent.bubbles)
-        console.log(customevent.detail)
+        console.log(customevent.bubbles);
+        console.log(customevent.detail);
     }
 
 }
