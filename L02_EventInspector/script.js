@@ -19,7 +19,7 @@ var EvnetInspector;
         document.getElementById("#div01")?.addEventListener("keyup", logInfo);
         document.getElementById("#div02")?.addEventListener("click", logInfo);
         document.getElementById("#div02")?.addEventListener("keyup", logInfo);
-        document.querySelector("#button")?.addEventListener("click", button1);
+        document.getElementById("btn")?.addEventListener("click", button1);
     }
     function setInfoBox(_event) {
         let x = _event.clientX;
@@ -32,9 +32,9 @@ var EvnetInspector;
     function logInfo(_event) {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
-    const customevent = new CustomEvent("wort", { bubbles: true, detail: { name: "jim" } });
+    const customevent = new CustomEvent("word", { bubbles: true, detail: { name: "jim was here" } });
     function button1() {
-        document.addEventListener("wort", customEvent);
+        document.addEventListener("word", customEvent);
         document.dispatchEvent(customevent);
     }
     function customEvent() {
