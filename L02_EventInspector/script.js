@@ -1,6 +1,13 @@
 "use strict";
 var EvnetInspector;
 (function (EvnetInspector) {
+    /*
+    Aufgabe: <L02 Eventinspector>
+    Name: <Laura Kupferschmid>
+    Matrikel: <272613>
+    Datum: <21.04.2023>
+    Quellen: <Madeleine Hansen, Judith Pauler>
+    */
     window.addEventListener("load", hndload);
     function hndload() {
         document.addEventListener("mousemove", setInfoBox);
@@ -12,6 +19,7 @@ var EvnetInspector;
         document.getElementById("#div01")?.addEventListener("keyup", logInfo);
         document.getElementById("#div02")?.addEventListener("click", logInfo);
         document.getElementById("#div02")?.addEventListener("keyup", logInfo);
+        document.querySelector("#button")?.addEventListener("click", button1);
     }
     function setInfoBox(_event) {
         let x = _event.clientX;
@@ -24,16 +32,14 @@ var EvnetInspector;
     function logInfo(_event) {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
-    document.getElementById("btn")?.addEventListener("tree", () => {
-        console.log("i am working");
-    });
-    /*function bton(): void {
-        console.log("hi ich funktioniere");
-        conso
-    }*/
-    function custom(_event) {
-        let customone = new CustomEvent('tree', { bubbles: true });
-        document.querySelector("#btn").dispatchEvent(customone);
+    const customevent = new CustomEvent("wort", { bubbles: true, detail: { name: "jim" } });
+    function button1() {
+        document.addEventListener("wort", customEvent);
+        document.dispatchEvent(customevent);
+    }
+    function customEvent() {
+        console.log(customevent.bubbles);
+        console.log(customevent.detail);
     }
 })(EvnetInspector || (EvnetInspector = {}));
 //# sourceMappingURL=script.js.map
