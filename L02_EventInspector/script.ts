@@ -47,10 +47,10 @@ namespace EvnetInspector {
         console.log(_event.type, _event.target, _event.currentTarget, _event);
     }
 
-    const customevent = new CustomEvent("wort",{bubbles:true, detail: {name:"jim"} });
+    const customevent = new CustomEvent("word",{bubbles:true, detail: {name:"jim"} });
 
     function button1(){
-        document.addEventListener("wort", customEvent);
+        document.addEventListener("word", customEvent);
         document.dispatchEvent(customevent);
     }
 
