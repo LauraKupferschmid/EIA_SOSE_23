@@ -66,7 +66,6 @@ namespace Datensammlung {
         edit.innerHTML = "Edit";
 
         edit.addEventListener("click", function () {
-            this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
             divcontainer.style.setProperty("visibility", "visible");
         });
 
