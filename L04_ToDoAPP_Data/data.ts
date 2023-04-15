@@ -10,12 +10,6 @@ namespace Datensammlung {
 
     let taskArray: String[] = [];
 
-    let newdiv = document.createElement("div");
-    newdiv.setAttribute("id", "newtask");
-
-    let newP = document.createElement("p");
-    newP.setAttribute("id", "newp");
-
     function getData(): String[] {
 
         let form: HTMLFormElement = document.querySelector('#myform')!;
@@ -36,32 +30,23 @@ namespace Datensammlung {
     };
 
     let divcontainer = <HTMLElement>document.querySelector("#div2");
-    
+
     //New todo mit addeventlister erstellen, macht formular teil sichtbar
     document.querySelector("#new")!.addEventListener("click", function () {
         divcontainer.style.setProperty("visibility", "visible");
     });
 
-    let trash = document.createElement("button");
-    trash.setAttribute("id", "trash");
-    trash.innerHTML = "Delete";
-
-    trash.addEventListener("click", function () {
-        this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
-    });
-
-    let edit = document.createElement("button");
-        edit.setAttribute("id", "edit");
-        edit.innerHTML = "Edit";
-
-        edit.addEventListener("click", function () {
-            divcontainer.style.setProperty("visibility", "visible");
-        });
-
     //auf add button add eventlistener legen, kindelemente erzeugen und anhängen
     document.querySelector("#add")!.addEventListener("click", function (e) {
+
         divcontainer.style.setProperty("visibility", "hidden");
         getData();
+
+        let newdiv = document.createElement("div");
+        newdiv.setAttribute("id", "newtask");
+
+        let newP = document.createElement("p");
+        newP.setAttribute("id", "newp");
 
         document.getElementById("div1")!.appendChild(newdiv);
         document.querySelector("#div1")!.appendChild(newP);
@@ -69,9 +54,25 @@ namespace Datensammlung {
         newP.innerHTML = "<input type=checkbox id=check>" + "Name: " + taskArray[0] + ", Aufgabe: " + taskArray[1] + ", <br>bis: " + taskArray[2] + ", Kommentar: " + taskArray[3] + "  <br>Status: " + taskArray[4];
         e.preventDefault();
 
+        let trash = document.createElement("button");
+        trash.setAttribute("id", "trash");
+        trash.innerHTML = "Delete";
+
+        trash.addEventListener("click", function () {
+            this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
+        });
+
+        let edit = document.createElement("button");
+        edit.setAttribute("id", "edit");
+        edit.innerHTML = "Edit";
+
+        edit.addEventListener("click", function () {
+            divcontainer.style.setProperty("visibility", "visible");
+        });
+
         newP.appendChild(trash);
         newP.appendChild(edit);
-        
+
     });
 
 }
