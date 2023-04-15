@@ -68,6 +68,7 @@ namespace Datensammlung {
 
         edit.addEventListener("click", function () {
             divcontainer.style.setProperty("visibility", "visible");
+            this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
         });
 
         newP.appendChild(trash);
