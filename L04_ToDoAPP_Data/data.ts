@@ -1,10 +1,10 @@
 namespace Datensammlung {
 
     /*
-    Aufgabe: <Aufgabe 4 ToDo>
+    Aufgabe: <L04 ToDoAPP_Data>
     Name: <Laura Kupferschmid
-    Matrikel: <272240>
-    Datum: <14.04.23>
+    Matrikel: <272613>
+    Datum: <15.04.23>
     Quellen: <Judith Pauler, Madelein Hansen>
     */
 
