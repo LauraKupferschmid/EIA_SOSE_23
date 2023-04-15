@@ -10,6 +10,12 @@ namespace Datensammlung {
 
     let taskArray: String[] = [];
 
+    let newdiv = document.createElement("div");
+    newdiv.setAttribute("id", "newtask");
+
+    let newP = document.createElement("p");
+    newP.setAttribute("id", "newp");
+
     function getData(): String[] {
 
         let form: HTMLFormElement = document.querySelector('#myform')!;
@@ -36,41 +42,36 @@ namespace Datensammlung {
         divcontainer.style.setProperty("visibility", "visible");
     });
 
-    //auf add button add eventlistener legen, kindelemente erzeugen und anhängen
-    document.querySelector("#add")!.addEventListener("click", function (e) {
-        divcontainer.style.setProperty("visibility", "hidden");
-        getData();
-        let newdiv = document.createElement("div");
-        newdiv.setAttribute("id", "newtask");
-        let newP = document.createElement("p");
-        newP.setAttribute("id", "newp");
-        document.getElementById("div1")!.appendChild(newdiv);
-        document.querySelector("#div1")!.appendChild(newP);
-        newP.innerHTML = "<input type=checkbox id=check>" + "Name: " + taskArray[0] + ", Aufgabe: " + taskArray[1] + ", <br>bis: " + taskArray[2] + ", Kommentar: " + taskArray[3] + "  <br>Status: " + taskArray[4];
-        e.preventDefault();
+    let trash = document.createElement("button");
+    trash.setAttribute("id", "trash");
+    trash.innerHTML = "Delete";
 
-        //delet button erstellen und
-        let trash = document.createElement("button");
-        trash.setAttribute("id", "trash");
-        newP.appendChild(trash);
-        trash.innerHTML = "Delete";
+    trash.addEventListener("click", function () {
+        this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
+    });
 
-        trash.addEventListener("click", function () {
-            this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
-        });
-
-        //edit button erstellen und definieren
-        let edit = document.createElement("button");
+    let edit = document.createElement("button");
         edit.setAttribute("id", "edit");
-        newP.appendChild(edit);
         edit.innerHTML = "Edit";
 
         edit.addEventListener("click", function () {
             divcontainer.style.setProperty("visibility", "visible");
         });
 
+    //auf add button add eventlistener legen, kindelemente erzeugen und anhängen
+    document.querySelector("#add")!.addEventListener("click", function (e) {
+        divcontainer.style.setProperty("visibility", "hidden");
+        getData();
+
+        document.getElementById("div1")!.appendChild(newdiv);
+        document.querySelector("#div1")!.appendChild(newP);
+
+        newP.innerHTML = "<input type=checkbox id=check>" + "Name: " + taskArray[0] + ", Aufgabe: " + taskArray[1] + ", <br>bis: " + taskArray[2] + ", Kommentar: " + taskArray[3] + "  <br>Status: " + taskArray[4];
+        e.preventDefault();
+
+        newP.appendChild(trash);
+        newP.appendChild(edit);
+        
     });
-
-
 
 }
