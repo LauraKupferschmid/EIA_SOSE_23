@@ -1,6 +1,13 @@
 "use strict";
 var client;
 (function (client) {
+    /*
+    Aufgabe: <L05 ToDoAPP_Data>
+    Name: <Laura Kupferschmid>
+    Matrikel: <272613>
+    Datum: <19.04.23>
+    Quellen: <Judith Pauler, Madelein Hansen>
+    */
     window.addEventListener("load", hndlload);
     function hndlload() {
         trash.addEventListener("click", trshbtn);
@@ -49,11 +56,13 @@ var client;
         newP.appendChild(edit);
     }
     function trshbtn() {
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        document.getElementById("div1").removeChild(newdiv);
+        document.querySelector("#div1").removeChild(newP);
     }
     function editbtn() {
         divcontainer.style.setProperty("visibility", "visible");
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        document.getElementById("div1").removeChild(newdiv);
+        document.querySelector("#div1").removeChild(newP);
     }
 })(client || (client = {}));
 //# sourceMappingURL=client.js.map
