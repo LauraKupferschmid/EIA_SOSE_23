@@ -17,6 +17,8 @@ namespace client {
         
     }
 
+    
+
      let trash = document.createElement("button"); // delet button erstellen
      trash.setAttribute("id", "trash");
      trash.innerHTML = "Delete";
@@ -67,7 +69,6 @@ namespace client {
 
         newP.appendChild(trash);
         newP.appendChild(edit);
-
 
     }
 
