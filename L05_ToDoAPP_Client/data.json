@@ -1,67 +1,49 @@
 {
     "personen": [
-        {
-            "name": "linda"
-        },
-        {
-            "name": "nico"
-        },
-        {
-            "name": "patrick"
-        },
-        {
-            "name": "lena"
-        }
+        {"name": "linda"},
+        {"name": "nico"},
+        {"name": "patrick"},
+        {"name": "lena"}
     ],
     "Aufgabe": [
-        {
-            "ToDo": "linda"
-        },
-        {
-            "ToDo": "nico"
-        },
-        {
-            "ToDo": "patrick"
-        },
-        {
-            "ToDo": "lena"
-        }
+        {"ToDo": "linda"},
+        {"ToDo": "nico"},
+        {"ToDo": "patrick"},
+        {"ToDo": "lena"}
     ],
     "Date": [
-        {
-            "datum": "26.07.2023"
-        },
-        {
-            "datum": "24.05.2024"
-        },
-        {
-            "datum": "15.06.2023"
-        },
-        {
-            "datum": "10.12.2001"
-        }
+        {"datum": "26.07.2023"},
+        {"datum": "24.05.2024"},
+        {"datum": "15.06.2023"},
+        {"datum": "10.12.2001"}
     ],
     "Comment": [
-        {
-            "kommentar": "mit seife"
-        },
-        {
-            "kommentar": "in ruhe und ordentlich"
-        },
-        {
-            "kommentar": "bis morgen"
-        },
-        {
-            "kommentar": "asap"
-        }
+        {"kommentar": "mit seife"},
+        {"kommentar": "in ruhe und ordentlich"},
+        {"kommentar": "bis morgen"},
+        {"kommentar": "asap"}
     ],
     "Radio": [
-        {
-            "zu Erledigen": "zu erledigen"
-        },
-        {
-            "In Bearbeitung": "wird bearbeitet"
-        }
+        {"zu Erledigen": "zu erledigen"},
+        {"In Bearbeitung": "wird bearbeitet"}
+    ],
+
+
+
+    "ToDo1":[
+        {"name":"lena"},
+        {"todo":"küche putzen"},
+        {"date":"23.05.2023"},
+        {"comment":"mit dem neuen putzmittel"},
+        {"radio":"zu erledigen"}
+    ],
+
+    "ToDo2":[
+        {"name":"patrick"},
+        {"todo":"bad putzen"},
+        {"date":"17.04.2023"},
+        {"comment":"mit putzmittel"},
+        {"radio":"in bearbeitung"}
     ]
 
 }
