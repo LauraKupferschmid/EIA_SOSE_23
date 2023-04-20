@@ -1,5 +1,13 @@
 namespace client {
-
+    
+    /*
+    Aufgabe: <L05 ToDoAPP_Data>
+    Name: <Laura Kupferschmid>
+    Matrikel: <272613>
+    Datum: <19.04.23>
+    Quellen: <Judith Pauler, Madelein Hansen>
+    */
+    
     window.addEventListener("load",hndlload)
 
     function hndlload () {
@@ -64,12 +72,14 @@ namespace client {
     }
 
     function trshbtn() : void {
-        this!.parentNode!.parentNode!.removeChild(this!.parentNode!)
+        document.getElementById("div1")!.removeChild(newdiv);
+        document.querySelector("#div1")!.removeChild(newP);
     }
 
 
     function editbtn(): void {
         divcontainer.style.setProperty("visibility", "visible");
-        this!.parentNode!.parentNode!.removeChild(this!.parentNode!);
+        document.getElementById("div1")!.removeChild(newdiv);
+        document.querySelector("#div1")!.removeChild(newP);
     }
 }
