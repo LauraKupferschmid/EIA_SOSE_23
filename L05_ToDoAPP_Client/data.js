@@ -1,11 +1,11 @@
 "use strict";
-var Datensammlung;
-(function (Datensammlung) {
+var Data_Client;
+(function (Data_Client) {
     /*
-    Aufgabe: <L04 ToDoAPP_Data>
-    Name: <Laura Kupferschmid
+    Aufgabe: <L05 ToDoAPP_Data>
+    Name: <Laura Kupferschmid>
     Matrikel: <272613>
-    Datum: <15.04.23>
+    Datum: <19.04.23>
     Quellen: <Judith Pauler, Madelein Hansen>
     */
     let taskArray = [];
@@ -53,9 +53,10 @@ var Datensammlung;
         edit.innerHTML = "Edit";
         edit.addEventListener("click", function () {
             divcontainer.style.setProperty("visibility", "visible");
+            this.parentNode.parentNode.removeChild(this.parentNode);
         });
         newP.appendChild(trash);
         newP.appendChild(edit);
     });
-})(Datensammlung || (Datensammlung = {}));
+})(Data_Client || (Data_Client = {}));
 //# sourceMappingURL=data.js.map
