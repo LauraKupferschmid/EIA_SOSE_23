@@ -1,0 +1,67 @@
+{
+    "personen": [
+        {
+            "name": "linda"
+        },
+        {
+            "name": "nico"
+        },
+        {
+            "name": "patrick"
+        },
+        {
+            "name": "lena"
+        }
+    ],
+    "Aufgabe": [
+        {
+            "ToDo": "linda"
+        },
+        {
+            "ToDo": "nico"
+        },
+        {
+            "ToDo": "patrick"
+        },
+        {
+            "ToDo": "lena"
+        }
+    ],
+    "Date": [
+        {
+            "datum": "26.07.2023"
+        },
+        {
+            "datum": "24.05.2024"
+        },
+        {
+            "datum": "15.06.2023"
+        },
+        {
+            "datum": "10.12.2001"
+        }
+    ],
+    "Comment": [
+        {
+            "kommentar": "mit seife"
+        },
+        {
+            "kommentar": "in ruhe und ordentlich"
+        },
+        {
+            "kommentar": "bis morgen"
+        },
+        {
+            "kommentar": "asap"
+        }
+    ],
+    "Radio": [
+        {
+            "zu Erledigen": "zu erledigen"
+        },
+        {
+            "In Bearbeitung": "wird bearbeitet"
+        }
+    ]
+
+}
