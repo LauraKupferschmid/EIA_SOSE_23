@@ -13,7 +13,10 @@ var client;
         trash.addEventListener("click", trshbtn);
         edit.addEventListener("click", editbtn);
         document.querySelector("#add").addEventListener("click", addbtn);
+        document.querySelector("#new").addEventListener("click", newbtn);
+        submit.addEventListener("click", sendTask);
     }
+    ;
     let trash = document.createElement("button"); // delet button erstellen
     trash.setAttribute("id", "trash");
     trash.innerHTML = "Delete";
@@ -24,9 +27,9 @@ var client;
     newdiv.setAttribute("id", "newtask");
     let newP = document.createElement("p"); // p element für to do erstellen
     newP.setAttribute("id", "newp");
+    let form = document.querySelector('#myform');
     let taskArray = [];
     function getData() {
-        let form = document.querySelector('#myform');
         let todoArray;
         let formData = new FormData(form);
         console.log(formData);
@@ -41,10 +44,28 @@ var client;
         return taskArray;
     }
     ;
+    let submit = document.querySelector("#add");
+    async function sendTask(_event) {
+        let formData = new FormData(form);
+        let query = new URLSearchParams(formData);
+        await fetch("main.html" + query.toString());
+        alert("Task Submited!");
+    }
+    async function communicate(_url) {
+        let response = await fetch(_url);
+        let offer = await response.text();
+        let gotdata = JSON.parse(offer);
+        // gotdata is empty, offer is a string, cant read the stuff out
+        console.log("this" + gotdata);
+        console.log("Response", response);
+        console.log("before" + offer);
+        document.querySelector("#div1").innerHTML = "Aufgabe: " + offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
+    }
+    communicate("Datainput.json");
     let divcontainer = document.querySelector("#div2");
-    document.querySelector("#new").addEventListener("click", function () {
+    function newbtn() {
         divcontainer.style.setProperty("visibility", "visible");
-    });
+    }
     function addbtn(e) {
         divcontainer.style.setProperty("visibility", "hidden");
         getData();
