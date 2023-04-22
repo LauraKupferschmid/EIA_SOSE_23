@@ -14,27 +14,30 @@ namespace client {
         trash.addEventListener("click", trshbtn);
         edit.addEventListener("click", editbtn);
         document.querySelector("#add")!.addEventListener("click", addbtn); 
-        
+        document.querySelector("#new")!.addEventListener("click", newbtn);
+        submit.addEventListener("click", sendTask);
     }
 
-    
+    export interface data  {
+        [key: string]: FormDataEntryValue;
+       };    
 
-     let trash = document.createElement("button"); // delet button erstellen
-     trash.setAttribute("id", "trash");
-     trash.innerHTML = "Delete";
-     let edit = document.createElement("button");   // edit button erstellen
-     edit.setAttribute("id", "edit");
-     edit.innerHTML = "Edit";
-     let newdiv = document.createElement("div");    // div element für to do erstellen
-     newdiv.setAttribute("id", "newtask");
-     let newP = document.createElement("p");    // p element für to do erstellen
-     newP.setAttribute("id", "newp");
+    let trash = document.createElement("button"); // delet button erstellen
+    trash.setAttribute("id", "trash");
+    trash.innerHTML = "Delete";
+    let edit = document.createElement("button");   // edit button erstellen
+    edit.setAttribute("id", "edit");
+    edit.innerHTML = "Edit";
+    let newdiv = document.createElement("div");    // div element für to do erstellen
+    newdiv.setAttribute("id", "newtask");
+    let newP = document.createElement("p");    // p element für to do erstellen
+    newP.setAttribute("id", "newp");
+    let form: HTMLFormElement = document.querySelector('#myform')!;
 
     let taskArray: String[] = [];
 
     function getData(): String[] {
 
-        let form: HTMLFormElement = document.querySelector('#myform')!;
         let todoArray: String[];
 
         let formData = new FormData(form);
@@ -51,11 +54,35 @@ namespace client {
         return taskArray;
     };
 
+    
+    let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#add"); 
+
+   async function sendTask(_event:Event): Promise<void> { //link zum versenden funktioniert nicht 
+     let formData: FormData = new FormData(form);
+     let query: URLSearchParams = new URLSearchParams(<any>formData);
+     await fetch("main.html"+ query.toString()); 
+     alert("Task Submited!");
+   }
+
+   async function communicate(_url: RequestInfo): Promise<void> {
+     let response: Response = await fetch(_url);
+     let offer: string= await response.text();
+     let gotdata: data = JSON.parse(offer);
+     // gotdata is empty, offer is a string, cant read the stuff out
+     console.log("this"+gotdata);
+     console.log("Response", response);
+     console.log("before"+offer);
+     document.querySelector("#div1")!.innerHTML = "Aufgabe: "+ offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
+   }
+
+   communicate("Datainput.json");
+
+
     let divcontainer = <HTMLElement>document.querySelector("#div2");
 
-    document.querySelector("#new")!.addEventListener("click", function () {
+    function newbtn(){
         divcontainer.style.setProperty("visibility", "visible");
-    });
+    }
 
     function addbtn (e:any):any{
         divcontainer.style.setProperty("visibility", "hidden");
@@ -69,7 +96,6 @@ namespace client {
 
         newP.appendChild(trash);
         newP.appendChild(edit);
-
     }
 
     function trshbtn() : void {
