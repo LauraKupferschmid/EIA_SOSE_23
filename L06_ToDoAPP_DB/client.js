@@ -44,11 +44,21 @@ var datenbank;
         return taskArray;
     }
     ;
+    let formData = new FormData(form);
+    let json = {};
+    for (let key of formData.keys())
+        if (!json[key]) {
+            let values = formData.getAll(key);
+            json[key] = values.length > 1 ? values : values[0];
+        }
     let submit = document.querySelector("#add");
     async function sendTask(_event) {
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
-        await fetch("https://webuser.hs-furtwangen.de/~kupfersl/EIA2/L06/Database/Task.json?" + query.toString());
+        query.set("command", "insert");
+        query.set("collection", "Tasks");
+        query.set("data", JSON.stringify(json));
+        await fetch("https://webuser.hs-furtwangen.de/~kupfersl/EIA2/L06/Database/?" + query.toString());
         alert("Task Submited!");
     }
     async function communicate(_url) {
@@ -56,9 +66,9 @@ var datenbank;
         let offer = await response.text();
         let gotdata = JSON.parse(offer);
         // gotdata is empty, offer is a string, cant read the stuff out
-        //  console.log("this"+gotdata);
-        //  console.log("Response", response);
-        //  console.log("before"+offer);
+        console.log("this" + gotdata);
+        console.log("Response", response);
+        console.log("before" + offer);
         document.querySelector("#div1").innerHTML = "Aufgabe: " + offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
     }
     communicate("data.json");
