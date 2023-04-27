@@ -48,7 +48,7 @@ var client;
     async function sendTask(_event) {
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
-        await fetch("main.html" + query.toString());
+        await fetch("main.html?" + query.toString());
         alert("Task Submited!");
     }
     async function communicate(_url) {
