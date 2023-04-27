@@ -1,0 +1,17 @@
+{    
+    "ToDo1":[
+        {"name":"lena"},
+        {"todo":"küche putzen"},
+        {"date":"23.05.2023"},
+        {"comment":"mit dem neuen putzmittel"},
+        {"radio":"zu erledigen"}
+    ],
+
+    "ToDo2":[
+        {"name":"patrick"},
+        {"todo":"bad putzen"},
+        {"date":"17.04.2023"},
+        {"comment":"mit putzmittel"},
+        {"radio":"in bearbeitung"}
+    ]
+}
