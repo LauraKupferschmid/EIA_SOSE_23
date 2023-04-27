@@ -54,13 +54,28 @@ namespace datenbank {
         return taskArray;
     };
 
+    interface FormDataJSON {
+        [key: string]: FormDataEntryValue | FormDataEntryValue[];
+      }
+      
+      let formData: FormData = new FormData(form);
+      let json: FormDataJSON = {};
+      
+      for (let key of formData.keys())
+        if (!json[key]) {
+          let values: FormDataEntryValue[] = formData.getAll(key);
+          json[key] = values.length > 1 ? values : values[0];
+        }
     
     let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#add"); 
 
    async function sendTask(_event:Event): Promise<void> { //link zum versenden funktioniert nicht 
      let formData: FormData = new FormData(form);
      let query: URLSearchParams = new URLSearchParams(<any>formData);
-     await fetch("https://webuser.hs-furtwangen.de/~kupfersl/EIA2/L06/Database/Task.json?"+ query.toString()); 
+     query.set("command", "insert");
+     query.set("collection", "Tasks");
+     query.set("data", JSON.stringify(json));
+     await fetch("https://webuser.hs-furtwangen.de/~kupfersl/EIA2/L06/Database/?"  + query.toString()); 
      alert("Task Submited!");
    }
 
@@ -69,9 +84,9 @@ namespace datenbank {
      let offer: string= await response.text();
      let gotdata: data = JSON.parse(offer);
      // gotdata is empty, offer is a string, cant read the stuff out
-     //  console.log("this"+gotdata);
-     //  console.log("Response", response);
-     //  console.log("before"+offer);
+     console.log("this"+gotdata);
+     console.log("Response", response);
+     console.log("before"+offer);
      document.querySelector("#div1")!.innerHTML = "Aufgabe: "+ offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
    }
 
