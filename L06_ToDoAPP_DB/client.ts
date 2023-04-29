@@ -58,19 +58,19 @@ namespace datenbank {
         [key: string]: FormDataEntryValue | FormDataEntryValue[];
       }
       
-      let formData: FormData = new FormData(form);
-      let json: FormDataJSON = {};
+    let formData: FormData = new FormData(form);
+    let json: FormDataJSON = {};
       
-      for (let key of formData.keys())
+    for (let key of formData.keys())
         if (!json[key]) {
-          let values: FormDataEntryValue[] = formData.getAll(key);
-          json[key] = values.length > 1 ? values : values[0];
+            let values: FormDataEntryValue[] = formData.getAll(key);
+            json[key] = values.length > 1 ? values : values[0];
         }
     
     let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#add"); 
 
-   async function sendTask(_event:Event): Promise<void> { //link zum versenden funktioniert nicht 
-     let formData: FormData = new FormData(form);
+   async function sendTask(_event:Event): Promise<void> { //link zum versenden funktioniert nicht
+    let formData: FormData = new FormData(form); 
      let query: URLSearchParams = new URLSearchParams(<any>formData);
      query.set("command", "insert");
      query.set("collection", "Tasks");
