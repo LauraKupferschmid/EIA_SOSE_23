@@ -6,20 +6,25 @@ var AnimatedPic;
         velocity;
         activity;
         constructor(_velocity) { }
-        fly(_timesclice) {
+        move(_timesclice) {
             this.velocity;
             this.position;
-            if (y_position > y_ground) {
-                this.activity = "walking";
-                this.velocity;
-            }
-            ;
+            /*if(){
+                this.activity = "walking"
+                this.velocity
+            };
+            this.activity = "flying"
+        
+            return this.activity*/
+        }
+        fly() {
             this.activity = "flying";
-            return this.activity;
         }
         walk() {
+            this.activity = "walking";
         }
         climb() {
+            this.activity = "climbing";
         }
         getRandomNumber(_max, _min = 0) {
             return Math.floor(Math.random() * _max) + _min;

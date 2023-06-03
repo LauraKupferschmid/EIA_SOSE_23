@@ -1,43 +1,28 @@
-namespace AnimatedPic {
+namespace FlyingPeopleAlpsII {
 
     export class paraglider {
         position: Vector;
         velocity: Vector;
         activity: string;
 
-        constructor (_velocity:Vector) {}
+        constructor(_velocity: Vector, _position: Vector, _activity: string) {
 
-        move(_timesclice : number){
-            this.velocity
-            this.position
-            
+            this.velocity = new Vector(50, 0);
+            this.velocity.randomize(120, 20);
+            this.velocity = _velocity;
 
-            /*if(){
-                this.activity = "walking"
-                this.velocity
-            };
-            this.activity = "flying"
-        
-            return this.activity*/
-        }
+            this.position = new Vector(150, 20);
+            this.position = _position;
 
-        fly () {
-            this.activity = "flying"
-
-        }
-        walk(){
-            this.activity = "walking"
-        }
-
-        climb(){
-            this.activity = "climbing"
+            this.activity = "flying";
+            this.activity = _activity;
         }
 
         getRandomNumber(_max: number, _min: number = 0): number {
             return Math.floor(Math.random() * _max) + _min;
         }
-    
-       changeColor(): string { //works for background, but not for any other function
+
+        changeColor(): string {
             const intensity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "A", "B", "C", "D", "E", "F"];
             let randomColor1 = intensity[Math.floor(Math.random() * intensity.length)];
             let randomColor2 = intensity[Math.floor(Math.random() * intensity.length)];
@@ -47,22 +32,21 @@ namespace AnimatedPic {
             let randomColor6 = intensity[Math.floor(Math.random() * intensity.length)];
             const randomColor: string = `#${randomColor1}${randomColor2}${randomColor3}${randomColor4}${randomColor5}${randomColor6}`;
             crc2.fillStyle = "randomColor";
-            console.log(randomColor);
-    
+
             return randomColor;
         }
 
-        draw(_position: Vector, _size: Vector){
+        draw(_position: Vector, _size: Vector) {
 
-            if(this.activity="flying"){
-                // kein schirm nur human
+            if (this.activity = "flying") {
+                //Schirm
                 crc2.beginPath();
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y, 10, 16);
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y - 6, 10, 10);
                 crc2.closePath();
-        
+
                 crc2.beginPath();
                 crc2.moveTo(_position.x, _position.y);
                 crc2.lineTo(_position.x - 20, _position.y - 20);
@@ -73,38 +57,72 @@ namespace AnimatedPic {
                 crc2.closePath();
             }
 
-            if(this.activity="walking"){
-                // kein schirm nur human
+            if (this.activity = "walking") {
+                //Kein Schirm
                 crc2.beginPath();
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y, 10, 16);
-        
+
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y - 6, 10, 10);
                 crc2.closePath();
             }
-            if(this.activity="climbing"){
-                //kein schirm nur human
+            if (this.activity = "climbing") {
+                //KeinSchirm
                 crc2.beginPath();
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y, 10, 16);
-        
+
                 crc2.fillStyle = this.changeColor();
                 crc2.fillRect(_position.x, _position.y - 6, 10, 10);
                 crc2.closePath();
             }
-            };
+        };
+
+        move(_timeslice: number): void {
+            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+            offset.scale(_timeslice);
+            this.position.add(offset); //kommt mit add nicht klar, wieso weiß ich nicht genau. Er ist in Vector deklariert.
+
+            //this.velocity
+            //this.position
+            this.activity = "flying";
+
+            let y_ground: Vector = new Vector(200, 500);
+            if (flystart > y_ground) {//flystart
+                //this.draw(_y: 400, 10)
+                this.activity = "walking";
+                this.position.x += crc2.canvas.width;
+            }
+
+            if (hikingzone) {
+                this.position.x -= crc2.canvas.width;
+                this.activity = "climbing"
+            }
+
+            if (flystart) {
+                this.position.y += crc2.canvas.height;
+                this.activity = "flying"
+            }
+
+        }
+
+        /*fly(_position: Vector, _size: Vector) {
+            this.activity = "flying";
+            return this.activity;
+        }
+
+        walk(_position: Vector, _size: Vector) {
+            this.activity = "walking";
+            return this.activity;
+
+            //this.velocity = new Vector(10, 0) //???
+        }
+
+        climb(_position: Vector, _size: Vector) {
+            this.activity = "climbing"
+            return this.activity;
+        }*/
 
     }
-
-
-
-
-
-
-
-
-
-
-
 }
