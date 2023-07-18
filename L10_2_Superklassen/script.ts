@@ -76,7 +76,7 @@ namespace FlyingPeopleAlpsIII {
         crc2.putImageData(imgData, 0, 0);
 
         for (let paraglideri of EverythingsFlying) {
-            paraglideri.doActivity(1 / 50);
+            paraglideri.doActivity(1 / 500);
             paraglideri.draw();
         }
 
